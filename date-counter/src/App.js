@@ -14,9 +14,6 @@ function Counter() {
   // Usestates Days and Month
   const [day, setDay] = useState(23);
   const [month, setMonth] = useState(1);
-  // UseState increament and decreament
-  const [step, setStep] = useState(1);
-  const [count, setCount] = useState(1);
 
   // Date Variables
   const currentDate = new Date();
@@ -37,12 +34,12 @@ function Counter() {
     <div>
       <div className="buttons">
         <button onClick={() => handleStepChange(-1)}>-</button>
-        <span>Step: {step}</span>
+        <span>Step: {setDay}</span>
         <button onClick={() => handleStepChange(1)}>+</button>
       </div>
       <div className="button2">
         <button onClick={() => handleCountChange(-1)}>-</button>
-        <span>Count: {count}</span>
+        <span>Count: {setMonth}</span>
         <button onClick={() => handleCountChange(1)}>+</button>
       </div>
       <div className="date">

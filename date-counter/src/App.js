@@ -1,18 +1,53 @@
 import React, { useState } from "react";
 import "./styles.css";
+import { addDays, addMonths, format } from "date-fns";
 
 export default function App() {
-  return <div></div>;
+  return (
+    <div>
+      <Counter />
+    </div>
+  );
 }
 
 function Counter() {
-  // const [step, setStep] = useState(1);
-  // const [count, SetCount] = usestate(1);
+  // Usestates Days and Month
+  const [day, setDay] = useState(23);
+  const [month, setMonth] = useState(1);
+  // UseState increament and decreament
+  const [step, setStep] = useState(1);
+  const [count, setCount] = useState(1);
+
+  // Date Variables
+  const currentDate = new Date();
+  // Update for dates
+  const updatedDate = addDays(addMonths(currentDate, month - 1), day - 1);
+  // Formate for the dates
+  const formattedDate = format(updatedDate, "dd MMMM yyyy");
+
+  const handleStepChange = (increament) => {
+    setDay((d) => d + increament);
+  };
+
+  const handleCountChange = (increament) => {
+    setMonth((m) => m + increament);
+  };
 
   return (
     <div>
-      {/* <button onClick={()}></button>
-      <button onClick={()}></button> */}
+      <div className="buttons">
+        <button onClick={() => handleStepChange(-1)}>-</button>
+        <span>Step: {step}</span>
+        <button onClick={() => handleStepChange(1)}>+</button>
+      </div>
+      <div className="button2">
+        <button onClick={() => handleCountChange(-1)}>-</button>
+        <span>Count: {count}</span>
+        <button onClick={() => handleCountChange(1)}>+</button>
+      </div>
+      <div className="date">
+        <span>{formattedDate}</span>
+      </div>
     </div>
   );
 }

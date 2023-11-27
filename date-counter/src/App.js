@@ -44,6 +44,15 @@ function Counter() {
       </div>
       <div className="date">
         <span>{formattedDate}</span>
+        <form>
+          {/* setting up form input for date counter for tommorrow */}
+          <input
+            type="text"
+            placeholder=""
+            value={""}
+            onChange={(e) => {}}
+          ></input>
+        </form>
       </div>
     </div>
   );

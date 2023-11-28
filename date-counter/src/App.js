@@ -14,6 +14,7 @@ function Counter() {
   // Usestates Days and Month
   const [day, setDay] = useState(23);
   const [month, setMonth] = useState(1);
+  const [sliderValue, setSliderValue] = useState(0);
 
   // Date Variables
   const currentDate = new Date();
@@ -30,13 +31,31 @@ function Counter() {
     setMonth((m) => m + increament);
   };
 
+  function handleSliderChange(e) {
+    setSliderValue(e.target.value);
+  }
+  function sliderReset() {
+    setSliderValue(0);
+  }
+
   return (
     <div>
+      <div className="slider">
+        <input
+          type="range"
+          min="0"
+          max="10"
+          value={sliderValue}
+          onChange={handleSliderChange}
+        />
+        <p>{sliderValue}</p>
+      </div>
       <div className="buttons">
         <button onClick={() => handleStepChange(-1)}>-</button>
         <span>Step: {setDay}</span>
         <button onClick={() => handleStepChange(1)}>+</button>
       </div>
+      <div></div>
       <div className="button2">
         <button onClick={() => handleCountChange(-1)}>-</button>
         <span>Count: {setMonth}</span>
@@ -44,15 +63,9 @@ function Counter() {
       </div>
       <div className="date">
         <span>{formattedDate}</span>
-        <form>
-          {/* setting up form input for date counter for tommorrow */}
-          <input
-            type="text"
-            placeholder=""
-            value={""}
-            onChange={(e) => {}}
-          ></input>
-        </form>
+      </div>
+      <div className="btnReset">
+        <button onClick={sliderReset}>Reset</button>
       </div>
     </div>
   );

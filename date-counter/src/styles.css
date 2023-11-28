@@ -16,3 +16,13 @@
   display: flex;
   justify-content: center;
 }
+
+.slider {
+  display: flex;
+  justify-content: center;
+}
+
+.btnReset {
+  display: flex;
+  justify-content: center;
+}

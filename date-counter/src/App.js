@@ -24,11 +24,7 @@ function Counter() {
   const formattedDate = format(updatedDate, "dd MMMM yyyy");
 
   const handleStepChange = (increment) => {
-    // if (sliderValue !== 0) {
-    //   setDay((setDay) => setDay + sliderValue); // Increment day by the value of the slider
-    // } else {
     setDay((d) => d + increment);
-    // }
   };
   const handleCountChange = (increament) => {
     setMonth((m) => m + increament);
@@ -38,7 +34,7 @@ function Counter() {
     const value = parseInt(e.target.value, 10);
     setSliderValue(value);
   }
-  // Reset Button for dates and count
+
   function resetButton() {
     setDay(1);
     setMonth(1);
@@ -67,7 +63,7 @@ function Counter() {
         >
           -
         </button>
-        <span>Step: {day}</span> {/* Use 'day' variable */}
+        <span>Step: {day}</span>
         <button
           onClick={() =>
             sliderValue !== 0
@@ -80,7 +76,7 @@ function Counter() {
       </div>
       <div className="button2">
         <button onClick={() => handleCountChange(-1)}>-</button>
-        <span>Count: {month}</span> {/* Use 'month' variable */}
+        <span>Count: {month}</span>
         <button onClick={() => handleCountChange(1)}>+</button>
       </div>
       <div className="date">

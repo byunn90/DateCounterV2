@@ -12,7 +12,7 @@ export default function App() {
 
 function Counter() {
   // Usestates Days and Month
-  const [day, setDay] = useState(23);
+  const [day, setDay] = useState(1);
   const [month, setMonth] = useState(1);
   const [sliderValue, setSliderValue] = useState(0);
 
@@ -23,22 +23,26 @@ function Counter() {
   // Formate for the dates
   const formattedDate = format(updatedDate, "dd MMMM yyyy");
 
-  const handleStepChange = (increament) => {
-    setDay((d) => d + increament);
+  const handleStepChange = (increment) => {
+    // if (sliderValue !== 0) {
+    //   setDay((setDay) => setDay + sliderValue); // Increment day by the value of the slider
+    // } else {
+    setDay((d) => d + increment);
+    // }
   };
-
   const handleCountChange = (increament) => {
     setMonth((m) => m + increament);
   };
 
   function handleSliderChange(e) {
-    setSliderValue(e.target.value);
+    const value = parseInt(e.target.value, 10);
+    setSliderValue(value);
   }
   // Reset Button for dates and count
-  function sliderReset() {
-    setSliderValue(0);
-    setDay(23);
+  function resetButton() {
+    setDay(1);
     setMonth(1);
+    setSliderValue(0);
   }
 
   return (
@@ -54,21 +58,36 @@ function Counter() {
         <p>{sliderValue}</p>
       </div>
       <div className="buttons">
-        <button onClick={() => handleStepChange(-1)}>-</button>
-        <span>Step: {setDay}</span>
-        <button onClick={() => handleStepChange(1)}>+</button>
+        <button
+          onClick={() =>
+            sliderValue !== 0
+              ? handleStepChange(-sliderValue)
+              : handleStepChange(-1)
+          }
+        >
+          -
+        </button>
+        <span>Step: {day}</span> {/* Use 'day' variable */}
+        <button
+          onClick={() =>
+            sliderValue !== 0
+              ? handleStepChange(sliderValue)
+              : handleStepChange(1)
+          }
+        >
+          +
+        </button>
       </div>
-      <div></div>
       <div className="button2">
         <button onClick={() => handleCountChange(-1)}>-</button>
-        <span>Count: {setMonth}</span>
+        <span>Count: {month}</span> {/* Use 'month' variable */}
         <button onClick={() => handleCountChange(1)}>+</button>
       </div>
       <div className="date">
         <span>{formattedDate}</span>
       </div>
       <div className="btnReset">
-        <button onClick={sliderReset}>Reset</button>
+        <button onClick={resetButton}>Reset</button>
       </div>
     </div>
   );

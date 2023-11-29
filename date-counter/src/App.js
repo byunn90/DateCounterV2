@@ -34,8 +34,11 @@ function Counter() {
   function handleSliderChange(e) {
     setSliderValue(e.target.value);
   }
+  // Reset Button for dates and count
   function sliderReset() {
     setSliderValue(0);
+    setDay(23);
+    setMonth(1);
   }
 
   return (
